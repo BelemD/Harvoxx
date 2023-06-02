@@ -1,0 +1,12 @@
+ {
+  "firstName": "",
+  "lastName": "",
+  "username": "",
+  "password": "",
+  "email": "",
+  "phoneNumber": "",
+  "accountNumber": "",
+  "accountBal": 0,
+  "transactions": [],
+  "isLoggedIn": false
+}

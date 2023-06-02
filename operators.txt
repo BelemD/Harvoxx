@@ -1,0 +1,168 @@
+What are Javascript Operators?
+JavaScript operators are special characters or symbols used to perform JavaScript task or operations on operands.
+
+TYPES OF OPERATORS
+
+Arithmetic Operators
+Assignment Operators
+Comparison Operators
+String Operators
+Logical Operators
+Bitwise Operators
+Ternary Operators
+Type Operators
+
+ARITHMETIC OPERATORS : These operators are used to perform arithmetic operations on operands.
+Examples:
+Addition (+) : Used for adding operands and also for concatenation of strings.
+let a = 4 + 4;
+
+Subtraction (-) : Substracts from a value.
+let a = 4 - 4;
+
+Multiplication (*) : Multiplies operands.
+let a = 4 * 4;
+
+Exponentiation (**) : Raises the first operands to the power of the second operand.
+let a = 4 ** 4;
+
+Modulus (%) : This returns the remainder of two operands which were divided.
+let a = 12 % 4;
+
+Decrement (--) : This operator decreases the value of the operands by 1.
+100--
+
+Increment (++) : This operator increases the value of the operands by 1.
+12++
+
+Division (/) : This divides operands.
+let a = 4 / 4;
+
+
+ASSIGNMENT OPERATORS : This assign values of the right operands to that of the left.
+Examples:
+Assignment (=) : Assigns value 
+x = y
+Addition Assignment (+=) : This adds and assign new value to a variable.
+x = x += y
+Subtraction Assignment (-=) : This Substracts and assign new value to a variable.
+x = x -= y
+Division Assignment (/=) : This divides and assign new value to a variable.
+x 
+Multiplication Assignment (*=) : This Multiplies and assign new value to a variable.
+
+Exponentiation Assignment (**=) :  This assigns the left operand raised to the power of the right operands as a new value to a variable.
+
+Modulus Assignment (%=) :  This assigns the remainder (modulo) as a new value to a variable.
+
+Left shift Assignment <<= : 
+
+COMPARISON OPERATORS
+Example:
+== Equal to
+a = b
+
+===	operands are of equal value and equal type
+a === b
+
+!=	left operand is not equal to the right
+a != 2
+
+!==	not equal value or not equal type
+a !== "2";
+
+>	greater than
+a > c 
+
+<	less than
+a < b
+
+>=	greater than or equal to. That is the left operand is greater or equal to the right operand.
+a >= 3
+
+<=	less than or equal to. That is the left operand is lesser or equal to the right operand.
+b <= 4
+
+?	ternary operator
+
+STRING OPERATORS ('',"")  : This an operator that operates on string, JavaScript operators converts non-string operands into string operands.
+Examples:
+concatenate string operators (+): This appends one string to another.
+
+"str" + "str1"
+concatenate assignment string operators (+=): This concatenate the first and second string then assign the value to the first string.
+
+let str1 = "Website: ";   str1 += "flex.com";
+console.log(str1);
+
+LOGICAL OPERATORS : They are used to determine the logic between variables and values.
+Examples:
+&&	logical and : This returns true if the both operands are true
+
+let a = 5; b = 4; c = a + b;
+console.log(a && a);  console.log(a && b);
+
+||	logical or : This returns turns true when one operands value is true.
+
+let a = 5; b = 4; c = a + b;
+console.log(a || a);  console.log(a || b);
+
+!	logical not : returns false if its single operand can be true.
+
+const a = true;   const b = false;
+console.log(!a); console.log(!b);
+
+
+BITWISE OPERATORS: 
+
+a & b	Bitwise AND: Returns 1 where the corresponding bits in a and b are 1. Returns 0 where either bit is 0.
+a | b	Bitwise OR: Returns 1 where either of the corresponding bits in a and b is 1, or both are 1. Returns 0 where both bits are 0.
+a ^ b	Bitwise XOR: (exclusive OR). Returns 1 where either of the corresponding bits in a and b is 1, and the other is 0. Returns 0 where both bits are 0.
+~a	Negation. Inverts the bits of a.
+a << n	Left shift: Shifts the bits in a to the left n positions, discarding bits that fall off on the left, and filling vacated right positions with 0.
+a >> n	Right shift with sign preserved: Shifts the bits in a to the right n positions, discarding bits that fall off on the right, and filling vacated left positions with 0, except that the leftmost bit in a is preserved.
+a >>> n	Right shift: Shifts the bits in a to the right n positions, discarding bits that fall off on the right, and filling vacated left positions with 0.
+
+Examples:
+&	AND	Sets each bit to 1 if both bits are 1
+|	OR	Sets each bit to 1 if one of two bits is 1
+^	XOR	Sets each bit to 1 if only one of two bits is 1
+~	NOT	Inverts all the bits
+<<	Zero fill left shift	Shifts left by pushing zeros in from the right and let the leftmost bits fall off
+>>	Signed right shift	Shifts right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off
+>>>	Zero fill right shift	Shifts right by pushing zeros in from the left, and let the rightmost bits fall off
+
+
+TERNARY OPERATORS:
+The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a 
+question mark ( ? ), then an expression to execute if the condition
+ is truthy followed by a colon ( : ), and finally the expression to execute if the condition is falsy.
+
+ It helps to think of the ternary operator as a shorthand way or writing an if-else statement. Here's a simple decision-making example
+  using if and else: int a = 10, b = 20, c; if (a < b) { c = a; } else { c = b; } printf("%d", c); 
+
+
+TYPE OPERATORS: This operator finds the data type of a variable.
+  Examples:
+
+Typeof : This returns the data type of a variable.
+instanceof : This returns true if an object is the instance of 
+
+var a = 17;
+    var b = "You";
+    var c = "";
+    var d = null;
+      
+    console.log("Type of a = " + (typeof a));
+    console.log("Type of b = " + (typeof b));
+    console.log("Type of c = " + (typeof c));
+    console.log("Type of d = " + (typeof d));
+    console.log("Type of e = " + (typeof e));
+
+    OUTPUT 
+    
+Type of a = number
+Type of b = string
+Type of c = string
+Type of d = object
+Type of e = undefined
