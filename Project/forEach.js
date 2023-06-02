@@ -43,11 +43,11 @@ _func(flowers);
 
 
 let a = [1,2,5,2,8,1];
-// obj = {};
+obj = {};
 
-// for(let i of a){
-//   obj[i] = true;
-// }
+for(let i of a){
+  obj[i] = true;
+}
 
-// let b = Object.keys(obj);
-// console.log(b);
+let b = Object.keys(obj);
+console.log(b);
