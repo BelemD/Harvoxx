@@ -1,12 +1,12 @@
- {
+[{
   "firstName": "",
   "lastName": "",
-  "username": "",
-  "password": "",
+  "username": "BELEM",
+  "password": "1234",
   "email": "",
   "phoneNumber": "",
   "accountNumber": "",
   "accountBal": 0,
   "transactions": [],
   "isLoggedIn": false
-}
+}]

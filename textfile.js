@@ -10,11 +10,11 @@ let myData = JSON.stringify(data);
 
 //console.log(myData);
 
-// fs.writeFile('output.txt', myData, err => {
-//   if (err) console.error(err);
-//    // else console.log('Data written to file successfully');
+fs.writeFile('output.txt', myData, err => {
+  if (err) console.error(err);
+   // else console.log('Data written to file successfully');
 
-// });
+});
 // fs.appendFile('output.txt', 'Belem' + "\n", function (err) {
 //   if (err) console.error(err);
 
@@ -25,8 +25,8 @@ let myData = JSON.stringify(data);
 
 //     });
 
-var array = fs.readFileSync('output.txt').toString().split("\n");
-console.log(array[0]);
+// var array = fs.readFileSync('output.txt').toString().split("\n");
+// console.log(array[0]);
 //  const many = fs.readFile('output.txt', function(err, myData){
 //    if(err)throw err;
 //    var array = myData.toString().split("\n");
