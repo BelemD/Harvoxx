@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <dialog id="dialog">
+
+        <form method="dialog">
+
+          <menu>
+            <button id="close" aria-label="close">X</button><br><br>
+
+            <input type="text" placeholder="Username" id="name1"> <br><br>
+            <!-- <input type="tel" placeholder="phone number" id="tel1"><br><br>
+            <input type="email" placeholder="email" id="email1"><br><br>
+            <input type="text" placeholder="Address" id="address1"><br><br> -->
+
+           <input type="submit" value="Submit" id="submit" onclick="submits()">
+
+          </menu>
+        </form>
+    </dialog>
+
+
+      
+      <menu>
+        <button id="Details">Enter your details</button>
+
+        <p id="name"></p>
+        <!-- <p id="tel"></p>
+        <p id="email"></p>
+        <p id="address"></p> -->
+      </menu>
+
+
+
+
+
+      
+      <script>
+       
+          const openButton = document.getElementById("Details");
+          const closeButton = document.getElementById("close");
+          const dialog = document.getElementById("dialog");
+
+
+
+       
+        
+      
+          function openCheck(dialog) {
+            if (dialog.open) {
+              console.log("Dialog open");
+            } else {
+              console.log("Dialog closed");
+            }
+          }
+      
+          // Update button opens a modal dialog
+          openButton.addEventListener("click", () => {
+            dialog.showModal();
+            openCheck(dialog);
+          });
+      
+          // Form close button closes the dialog box
+          closeButton.addEventListener("click", () => {
+            dialog.close();
+            openCheck(dialog);
+          });
+
+           //   grabbing of values
+
+         let name1 = document.getElementById('name1');
+        //  let tel1 = document.getElementById('tel1');
+        //  let email1 = document.getElementById('email1');
+        //  let address1 = document.getElementById('address1')
+         let name = document.getElementById('name');
+        //  let tel = document.getElementById('tel');
+        //  let email = document.getElementById('email');
+        //  let address = document.getElementById('address');
+        //  let submit = document.getElementById('submit');
+
+
+
+        function submits(){
+            name.innerHTML = name1.value;
+            // tel.innerHTML = tel1.value;
+            // email.innerHTML = email1.value;
+            // address.innerHTML = address1.value;
+            openButton.style.display = 'none';
+        }
+
+     
+
+      </script>
+
+
+</body>
+</html>

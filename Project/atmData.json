@@ -1,12 +1,11 @@
 [{
-  "firstName": "",
-  "lastName": "",
-  "username": "BELEM",
-  "password": "1234",
-  "email": "",
-  "phoneNumber": "",
-  "accountNumber": "",
-  "accountBal": 0,
-  "transactions": [],
+  "fullName": "AARON TUBOBELEM DEIN",
+  "userName": "BELEM",
+  "userPin": "1234",
+  "email": "tubodein06@gmail.com",
+  "phoneNum": "09068211572",
+  "userAddress": "",
+  "dateOfBirth": "",
+  "acctBalance": 0,
   "isLoggedIn": false
 }]

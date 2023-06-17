@@ -198,9 +198,8 @@ function login() {
   console.log("Please Enter Your Details");
   let username = prompt("Username: ").toUpperCase();
   let password = prompt("Password: ");
-  const user = usersData.find(
-    (user) => user.username === username && user.password === password
-  );
+  const user = usersData.find( user => user.username === username && user.password === password);
+  // const user = usersData.find(user => user.username === username && user.password === password);
   if (user) {
     user.isLoggedIn = true;
     console.clear();

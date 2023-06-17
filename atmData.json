@@ -1,1 +1,48 @@
-{"userName":"gehfj","userPin":"2662","email":"bkdjhujhndjdm ","phoneNum":"67689087689","acctBalance":0,"dateOfBirth":"728792","fullName":"ejiwe klekpop;","userAddress":"nioef8whhionc ","isLoggedIn":false}
+[
+  [
+    {
+      "userName": "Belem",
+      "userPin": "1234",
+      "email": "tubodein06@gmail.com",
+      "phoneNum": "09068211572",
+      "acctBalance": 0,
+      "dateOfBirth": "06 06 1998",
+      "fullName": "Aaron Tubobelem Dein",
+      "userAddress": "33rd Origi",
+      "isLoggedIn": false
+    },
+    {
+      "fullName": "Ade Tayo",
+      "userName": "Tayo",
+      "userPin": "2345",
+      "email": "gyff@gmail.com",
+      "phoneNum": "09098765432",
+      "userAddress": "lag",
+      "dateOfBirth": "06 09 2012",
+      "acctBalance": 0,
+      "isLoggedIn": false
+    }
+  ],
+  {
+    "fullName": "Uzomah PIstis",
+    "userName": "Pistis",
+    "userPin": "1231",
+    "email": "tubo@gmail.com",
+    "phoneNum": "65765678908",
+    "userAddress": "22nd Ukuru",
+    "dateOfBirth": "06 76 8990",
+    "acctBalance": 0,
+    "isLoggedIn": false
+  },
+  {
+    "fullName": "Sonia Terry",
+    "userName": "Sonia23",
+    "userPin": "2323",
+    "email": "sonia@gmail.com",
+    "phoneNum": "09876689034",
+    "userAddress": "33rd Agabaje ",
+    "dateOfBirth": "11th August ",
+    "acctBalance": 0,
+    "isLoggedIn": false
+  }
+]

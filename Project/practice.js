@@ -1,25 +1,21 @@
 const prompt = require("prompt-sync")({sigint:true});
 //const { sign } = require("crypto");
 const fs = require('fs');
-/*let userData = fs.readFile('atmData.json','utf8', (err, data) => {
+const userData = JSON.parse(fs.readFileSync('atmData.json', 'utf8'))
+ 
 
-  if(err) {
-    console.error(err);
-    return;
-  }
-  console.log(data);
-});*/
+
 
 let user = {
+  fullName: "",
   userName: "",
   userPin: "",
   email: "",
   phoneNum: "",
-  acctBalance: 0,
-  dateOfBirth: "",
-  fullName: "",
   userAddress: "",
-  isLoggedIn: false,
+  dateOfBirth: "",
+  acctBalance: 0,
+  isLoggedIn: false
 };
 
 let cont;
@@ -73,10 +69,10 @@ function options(){
 
 function _userName(){
   let userName = prompt('');
-  if(userName === " " && isNaN(userName)){
+  if(userName == "" && isNaN(userName)){
     console.log(`This field should not be empty neither should it have numbers`);
   }else{
-    user.userName =userName;
+    user.userName = userName;
   }
   
 }
@@ -101,11 +97,12 @@ function _userAddress(){
 
   let userAddress = prompt('');
  
-  if(userAddress !== " "){
-    user.userAddress = userAddress;
-  }else{
+  if(userAddress === " "){
     console.log('Please try again');
     _userAddress();
+  }else{
+    user.userAddress = userAddress;
+  
   }
      
 }
@@ -123,12 +120,16 @@ function _dateOfBirth(){
 }
 
 function _email(){
-  let email = prompt('');
- 
+  let email = prompt('Input your Email address: ');
+ let char1 = '@';  let char2 = '.com';
   if(email === " " && isNaN(email)){
     console.log('Please try again');
     _email();
-  }else{
+  }else if(!email.includes(char1) && !email.includes(char2)){
+    console.log(`Invalid Email, please try again`)
+    _email();
+  }
+  else{
     user.email = email;
   }
 }
@@ -188,19 +189,17 @@ let confirmData = () => {
 let confirmUser = parseInt(prompt("To confirm data, type 1. To restart registration type 2\n")) ;
 
 if(confirmUser === 1){
-  //userData.push(User);
-  fs.writeFileSync("atmData.json", JSON.stringify(user));
+  userData.push(user);
+  fs.writeFileSync("atmData.json", JSON.stringify(userData));
         console.clear();
         console.log(
           `Congratulations You have succefully registered`
         );
 
-        console.clear();
-        
     options();
 }else if(confirmUser === 2){
   console.clear();
-signIn();
+  signIn();
 } else{
   console.log(`Please input a valid number`);
   confirmData();
@@ -208,16 +207,17 @@ signIn();
 }
 
 
+
+
 //Login function
 function login(){
+  console.log("---------- DEPOSIT -----------");
   console.log('Please log in your details');
   let nameOfUser = prompt('Please input your username: ');
 
-  let pinOfUser = parseFloat(prompt('Please input your Pin: '));
+  let pinOfUser = prompt('Please input your Pin: ');
 
-  const users = userData.find(
-    (users) => users.userName === nameOfUser && users.userPin === pinOfUser
-  );
+  const users = userData.find(users => users.userPin === pinOfUser && users.userName === nameOfUser);
   if(users){
 
     users.isLoggedIn = true;
@@ -233,32 +233,121 @@ function login(){
 
 function Deposit() {
   console.log('');
-  let amount = parseInt(prompt('Please input the amount to deposit: '));
+  const users = userData.find(users => users.isLoggedIn);
+  
+  if(users){
+    let amount = parseInt(prompt('Please input the amount to deposit: '));
+    
+    checkAmount(amount);
+    let checkAmount = (amount) => {
+      if(isNaN(amount) === true){
+        console.log(`Invalid Input`);
+        contiNue();
+      }else if(amount <= 0){
+        console.log('Invalid Input');
+        contiNue();
+      }else{
+        userData.push(users.acctBalance += amount)
+        fs.writeFileSync("atmData.json", JSON.stringify(userData));
+        console.log(`You have successfully made a deposit of #${amount}`);
+        contiNue();
+      }
+    }
+  }
+  let contiNue =() => {
+    let num = prompt(`Type 1 to make another deposit, for all options type 2`)
+  if(num === 1){
+    console.clear();
+    Deposit();
+  }else if(num === 2){
+    console.clear();
+    options();
+  }else{
+    console.log("Please type a valid number")
+    contiNue();
+  }
+  }
 
-  let presentBalance = user.acctBalance + amount;
-
-if(isNaN(amount) && amount !== " "){
-  user.acctBalance = presentBalance;
-  console.log('Your present account balance is ' + user.presentBalance);
-}else{
-  console.log('Input the right digit');
-  quit();
-}
 }
 
 function Transfer(){
-  console.log('');
-  let amount = parseFloat(prompt('Please input the amount to transfer: '));
-  if(amount > user.acctBalance){
-    console.log('Insufficient Fund');
-  }else if (amount !== Number && amount !== ""){
-    console.log('Incorrect digit');
+  console.log("---------- TRANSER -----------");
+  const users = userData.find((users) => users.isLoggedIn);
+  if (users) {
+    let amount = parseFloat(prompt('Please input the amount to transfer: '));
+    checkAmount(amount);
+    let checkAmount = (amount) => {
+    if(isNaN(amount)){
+      console.log( `Invalid Input`)
+      contiNue();
+    }else if(user.acctBalance < amount){
+      console.log( `Insuffient fund`)
+      contiNue();
+    }else{
+      let input = prompt(`Input Recipient username`)
+      const checkInput = userData.find( checkInput => checkInput.userName === input && !checkInput.isLoggedIn);
+
+      if(checkInput){
+        console.log(` User ${checkInput.fullName} found`);
+        checkTransDetails();
+        let checkTransDetails = () => {
+          console.log("---------CONFIRM TRANSFER---------");
+          console.log(`Transaction Type: Inter-User`);
+          console.log(`Source Name: ${users.fullName}
+          Recipient Account number: ${checkAmount.fullName} 
+          `)
+        console.log(`Transaction Amount ${amount}`)
+
+        let finalTransaction = prompt(`Type 1 to confirm transaction \n Type 2 to cancel: `)
+        if(finalTransaction === 1){
+          let retry = true;
+          let failure = 0;
+          while(retry){
+            let pin = prompt("Please enter your password")
+            if(user.userPin == pin){
+              userData.push(users.acctBalance -= amount)
+              userData.push(checkInput.acctBalance += amount)
+
+              fs.writeFileSync("atmData.json", JSON.stringify(userData));
+              console.log(`Your transaction was successful ${amount} to ${checkInput.fullName}`)
+              contiNue();
+              break;
+            }else{
+              failure++
+              if(failure <= 2){
+                console.log(`Incorrect Password, You will be logged out after 3 failed attempts 
+                You have ${3 - failure} attempts`);
+                retry = true;
+              }else{
+                console.log(`Maximum attempt reached`)
+                quit();
+                break;
+              }
+            }
+          }
+
+        }else if(finalTransaction === 2){
+          
+        }
+
+        }
+      }
+    }
   }
-  else{
-    console.log('Transfer Succesful!');
-    let presentBalance = user.acctBalance - amount;
-    console.log('Your present account balance is ' + user.acctBalance);
-    user.acctBalance = presentBalance;
+  }
+
+  let contiNue =() => {
+    let num = prompt(`Type 1 to make another deposit, for all options type 2`)
+  if(num === 1){
+    console.clear();
+    Transfer();
+  }else if(num === 2){
+    console.clear();
+    options();
+  }else{
+    console.log("Please type a valid number")
+    contiNue();
+  }
   }
 }
 
@@ -270,7 +359,7 @@ function withdrawal() {
   if(amount > user){
     console.log('Insufficient Fund');
   }
-  else if (amount !== Number && amount !== ""){
+  else if (amount !== Number || amount !== ""){
     console.log('Incorrect digit');
   }
   else{
