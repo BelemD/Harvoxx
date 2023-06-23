@@ -32,3 +32,5 @@
 //  }
 // console.log(arrays(arr));
 
+
+console.log(Math.floor(Math.random() * Math.pow(10, 10)))
